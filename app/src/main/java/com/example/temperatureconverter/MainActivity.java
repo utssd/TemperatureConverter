@@ -1,6 +1,7 @@
 package com.example.temperatureconverter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ public class MainActivity extends Activity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button1:
+                Intent intent;
                 RadioButton celsiusButton = (RadioButton) findViewById(R.id.radio0);
                 RadioButton fahrenheitButton = (RadioButton) findViewById(R.id.radio1);
                 if (text.getText().length() == 0) {
@@ -33,15 +35,25 @@ public class MainActivity extends Activity {
 
                 float inputValue = Float.parseFloat(text.getText().toString());
                 if (celsiusButton.isChecked()) {
-                    text.setText(String
-                            .valueOf(ConverterUtil.convertFahrenheitToCelsius(inputValue)));
-                    celsiusButton.setChecked(false);
-                    fahrenheitButton.setChecked(true);
+                    intent = new Intent(this, showCelsius.class);
+                    float res = ConverterUtil.convertFahrenheitToCelsius(inputValue);
+                    intent.putExtra("original", inputValue);
+                    intent.putExtra("result", res);
+                    //text.setText(String
+                    //        .valueOf(ConverterUtil.convertFahrenheitToCelsius(inputValue)));
+                    //celsiusButton.setChecked(false);
+                    //fahrenheitButton.setChecked(true);
                 } else {
-                    text.setText(String
-                            .valueOf(ConverterUtil.convertCelsiusToFahrenheit(inputValue)));
-                    fahrenheitButton.setChecked(false);
-                    celsiusButton.setChecked(true);
+                    //text.setText(String
+                    //        .valueOf(ConverterUtil.convertCelsiusToFahrenheit(inputValue)));
+                    //fahrenheitButton.setChecked(false);
+                    //celsiusButton.setChecked(true);
+                    intent = new Intent(this, showFarenheit.class);
+                    float res = ConverterUtil.convertCelsiusToFahrenheit(inputValue);
+                    intent.putExtra("original", inputValue);
+                    intent.putExtra("result", res);
+
+
                 }
                 break;
         }

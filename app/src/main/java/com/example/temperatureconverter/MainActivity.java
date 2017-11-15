@@ -39,6 +39,7 @@ public class MainActivity extends Activity {
                     float res = ConverterUtil.convertFahrenheitToCelsius(inputValue);
                     intent.putExtra("original", inputValue);
                     intent.putExtra("result", res);
+                    startActivity(intent);
                     //text.setText(String
                     //        .valueOf(ConverterUtil.convertFahrenheitToCelsius(inputValue)));
                     //celsiusButton.setChecked(false);
@@ -52,6 +53,7 @@ public class MainActivity extends Activity {
                     float res = ConverterUtil.convertCelsiusToFahrenheit(inputValue);
                     intent.putExtra("original", inputValue);
                     intent.putExtra("result", res);
+                    startActivity(intent);
 
 
                 }

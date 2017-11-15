@@ -18,8 +18,7 @@ public class showCelsius extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.showcelsius);
         TextView tv = (TextView) findViewById(R.id.textView2);
-        Intent intent = getIntent();
-        String s = intent.getStringExtra("original") + "F is " + intent.getStringExtra("result") + "C";
+        String s = getIntent().getStringExtra("original") + "F is " + getIntent().getStringExtra("result") + "C";
         tv.setText(s);
         findViewById(R.id.Button_back).setOnClickListener(this);
     }
@@ -28,6 +27,7 @@ public class showCelsius extends Activity implements View.OnClickListener{
         switch (v.getId()) {
             case R.id.Button_back:
                 intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
         }
     }
 }

@@ -36,27 +36,25 @@ public class MainActivity extends Activity {
                 float inputValue = Float.parseFloat(text.getText().toString());
                 if (celsiusButton.isChecked()) {
                     intent = new Intent(this, showCelsius.class);
-                    float res = ConverterUtil.convertFahrenheitToCelsius(inputValue);
-                    intent.putExtra("original", inputValue);
+                    String res = Float.toString(ConverterUtil.convertCelsiusToFahrenheit(inputValue));
+                    intent.putExtra("original", Float.toString(inputValue));
                     intent.putExtra("result", res);
-                    startActivity(intent);
                     //text.setText(String
                     //        .valueOf(ConverterUtil.convertFahrenheitToCelsius(inputValue)));
-                    //celsiusButton.setChecked(false);
-                    //fahrenheitButton.setChecked(true);
+                    celsiusButton.setChecked(false);
+                    fahrenheitButton.setChecked(false);
                 } else {
                     //text.setText(String
                     //        .valueOf(ConverterUtil.convertCelsiusToFahrenheit(inputValue)));
-                    //fahrenheitButton.setChecked(false);
-                    //celsiusButton.setChecked(true);
+
                     intent = new Intent(this, showFarenheit.class);
-                    float res = ConverterUtil.convertCelsiusToFahrenheit(inputValue);
-                    intent.putExtra("original", inputValue);
+                    String res =  Float.toString(ConverterUtil.convertFahrenheitToCelsius(inputValue));
+                    intent.putExtra("original", Float.toString(inputValue));
                     intent.putExtra("result", res);
-                    startActivity(intent);
-
-
+                    fahrenheitButton.setChecked(false);
+                    celsiusButton.setChecked(false);
                 }
+                startActivity(intent);
                 break;
         }
     }
